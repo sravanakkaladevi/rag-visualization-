@@ -22,6 +22,67 @@ export async function generateStaticParams() {
 
 export const instant = false;
 
+function parseInlineMarkdown(text: string): React.ReactNode[] {
+  // Regex to match **bold** and `code`
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={i} className="text-[var(--color-text-primary)] font-semibold">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith('`') && part.endsWith('`')) {
+      return (
+        <code
+          key={i}
+          className="px-1.5 py-0.5 text-xs rounded bg-[var(--color-bg-tertiary)] border border-[var(--color-border-primary)] text-[var(--color-accent-purple)] font-mono"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    return part;
+  });
+}
+
+function FormattedContent({ content }: { content: string }) {
+  const blocks = content.split(/\n\n+/);
+
+  return (
+    <div className="space-y-4 text-sm sm:text-base text-[var(--color-text-secondary)] leading-relaxed">
+      {blocks.map((block, idx) => {
+        const trimmed = block.trim();
+        const isPoint =
+          trimmed.startsWith('**') ||
+          trimmed.startsWith('- ') ||
+          trimmed.startsWith('* ') ||
+          /^\d+\.\s/.test(trimmed);
+
+        if (isPoint) {
+          const cleanText = trimmed.replace(/^[-*]\s+/, '');
+          return (
+            <div key={idx} className="flex items-start gap-3 my-2.5 pl-1">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent-purple)] mt-2 shrink-0 ring-4 ring-[var(--color-accent-purple)]/10" />
+              <div className="flex-1 leading-relaxed">
+                {parseInlineMarkdown(cleanText)}
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <p key={idx} className="leading-relaxed">
+            {parseInlineMarkdown(trimmed)}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const lesson = lessons[slug];
@@ -130,10 +191,8 @@ export default async function LessonPage({ params }: PageProps) {
                 </h3>
               )}
 
-              {/* Render Section Content */}
-              <div className="prose prose-invert max-w-none text-[var(--color-text-secondary)] leading-relaxed space-y-3 whitespace-pre-line text-sm sm:text-base">
-                {section.content}
-              </div>
+              {/* Render Section Content with formatted points and bold titles */}
+              <FormattedContent content={section.content} />
 
               {/* Diagram */}
               {section.diagram && (
