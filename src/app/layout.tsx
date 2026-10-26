@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: 'RAG Learning Hub — Understand RAG. Build Smarter AI.',
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <Header />
         <div className="pt-16 min-h-screen">{children}</div>
+        <Analytics />
       </body>
     </html>
   );
