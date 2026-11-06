@@ -67,9 +67,9 @@ export default function RAGPipeline() {
   const active = stages.find(s => s.id === activeStage);
 
   return (
-    <div className="my-8">
+    <div className="w-full my-4">
       {/* Pipeline visual */}
-      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-0 mb-6">
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
         {stages.map((stage, idx) => {
           const Icon = stage.icon;
           const isActive = activeStage === stage.id;
@@ -77,14 +77,14 @@ export default function RAGPipeline() {
             <div key={stage.id} className="flex items-center">
               <button
                 onClick={() => setActiveStage(isActive ? null : stage.id)}
-                className={`pipeline-node flex flex-col items-center gap-1.5 min-w-[90px] md:min-w-[110px] ${isActive ? 'active' : ''}`}
+                className={`pipeline-node flex flex-col items-center gap-1.5 min-w-[78px] sm:min-w-[95px] md:min-w-[110px] px-2 sm:px-4 py-2 sm:py-3 ${isActive ? 'active' : ''}`}
                 aria-label={`Learn about ${stage.label}`}
               >
-                <Icon size={20} style={{ color: stage.color }} />
-                <span className="text-xs font-medium">{stage.label}</span>
+                <Icon size={18} style={{ color: stage.color }} />
+                <span className="text-[11px] sm:text-xs font-medium">{stage.label}</span>
               </button>
               {idx < stages.length - 1 && (
-                <ChevronRight size={16} className="text-[var(--color-text-muted)] mx-1 hidden md:block shrink-0" />
+                <ChevronRight size={16} className="text-[var(--color-muted)] mx-0.5 hidden xl:block shrink-0" />
               )}
             </div>
           );
@@ -93,18 +93,20 @@ export default function RAGPipeline() {
 
       {/* Active stage detail */}
       {active && (
-        <div className="animate-fade-in bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-xl p-6 max-w-2xl mx-auto">
+        <div className="animate-fade-in card p-4 sm:p-6 w-full max-w-2xl mx-auto">
           <div className="flex items-center gap-2 mb-3">
             <active.icon size={20} style={{ color: active.color }} />
-            <h4 className="font-bold text-lg">{active.label}</h4>
+            <h4 className="font-bold text-base sm:text-lg">{active.label}</h4>
           </div>
-          <p className="text-sm text-[var(--color-text-secondary)] mb-3">{active.description}</p>
-          <p className="text-sm text-[var(--color-text-muted)]">{active.details}</p>
+          <p className="text-sm text-[var(--color-ink-2)] mb-3 leading-relaxed">{active.description}</p>
+          <div className="text-xs sm:text-sm text-[var(--color-muted)] bg-[var(--color-paper-2)] rounded-lg p-3 sm:p-4 leading-relaxed border border-[var(--color-rule)]">
+            {active.details}
+          </div>
         </div>
       )}
 
       {!active && (
-        <p className="text-center text-sm text-[var(--color-text-muted)]">
+        <p className="text-center text-xs sm:text-sm text-[var(--color-muted)]">
           Click any stage to learn more about it
         </p>
       )}

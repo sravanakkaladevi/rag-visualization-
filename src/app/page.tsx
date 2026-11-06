@@ -60,18 +60,10 @@ export default function Home() {
       <section
         style={{
           borderBottom: 'var(--rule-hair) solid var(--color-rule)',
-          paddingBlock: 'var(--space-4xl) var(--space-3xl)',
+          paddingBlock: 'var(--space-3xl) var(--space-2xl)',
         }}
       >
-        <div
-          className="container"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
-            gap: 'var(--gap-columns)',
-            alignItems: 'center',
-          }}
-        >
+        <div className="container hero-grid">
           {/* Text column */}
           <div>
             <h1
@@ -82,9 +74,10 @@ export default function Home() {
                 letterSpacing: 'var(--tracking-display)',
                 color: 'var(--color-ink)',
                 marginBottom: 'var(--space-lg)',
-                lineHeight: 1.05,
+                lineHeight: 1.08,
                 textWrap: 'balance',
-                maxWidth: '14ch',
+                wordBreak: 'normal',
+                hyphens: 'none',
               }}
             >
               Master RAG{' '}
@@ -115,11 +108,14 @@ export default function Home() {
               background: 'var(--color-paper-2)',
               border: 'var(--rule-hair) solid var(--color-rule)',
               borderRadius: 'var(--radius-card)',
-              padding: 'var(--space-lg)',
-              minHeight: '320px',
+              padding: 'clamp(1rem, 3vw, var(--space-lg))',
+              minHeight: '280px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              width: '100%',
+              maxWidth: '100%',
+              overflow: 'hidden',
             }}
           >
             <RAGPipeline />
@@ -403,14 +399,7 @@ export default function Home() {
         }}
       >
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(0, 2fr) repeat(3, minmax(0, 1fr))',
-              gap: 'var(--space-xl)',
-              marginBottom: 'var(--space-xl)',
-            }}
-          >
+          <div className="footer-grid">
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)', marginBottom: 'var(--space-sm)' }}>
                 <BookOpen size={18} style={{ color: 'var(--color-accent)' }} />
