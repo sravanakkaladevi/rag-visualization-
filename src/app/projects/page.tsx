@@ -26,7 +26,7 @@ export default function ProjectsPage() {
 
       <main className="flex-1 min-w-0 px-4 sm:px-8 py-8 max-w-6xl mx-auto">
         <header className="mb-10 pb-8 border-b border-[var(--color-border-primary)]">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[var(--color-accent-purple)] uppercase tracking-wider mb-2">
+          <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-ink-2)] mb-2">
             <FolderGit2 size={14} />
             Hands-on Tutorials
           </div>
@@ -43,12 +43,12 @@ export default function ProjectsPage() {
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] p-6 flex flex-col justify-between hover:border-[var(--color-border-focus)] transition-all group hover:-translate-y-1"
+              className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] p-6 flex flex-col justify-between hover:border-[var(--color-border-focus)] transition-colors transition-transform group hover:-translate-y-1"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span
-                    className={`px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider border ${
+                    className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border ${
                       difficultyColors[project.difficulty]
                     }`}
                   >

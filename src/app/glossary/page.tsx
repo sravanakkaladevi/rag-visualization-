@@ -53,9 +53,9 @@ export default function GlossaryPage() {
 
         {/* Header */}
         <header className="mb-10 pb-8 border-b border-[var(--color-border-primary)]">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[var(--color-accent-purple)] uppercase tracking-wider mb-2">
+          <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-ink-2)] mb-2">
             <BookA size={14} />
-            Terminology & Definitions
+            Terminology &amp; Definitions
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--color-text-primary)] tracking-tight mb-4">
             RAG Glossary

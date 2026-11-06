@@ -16,7 +16,6 @@ const lessons = [
     slug: 'rag-fundamentals',
     title: 'RAG Fundamentals',
     icon: Lightbulb,
-    color: '#fbbf24',
     difficulty: 'Beginner',
     desc: 'What RAG is, why it matters, and how it works step by step. Start here.',
     minutes: 25,
@@ -25,7 +24,6 @@ const lessons = [
     slug: 'basic-rag',
     title: 'Basic / Naive RAG',
     icon: FileText,
-    color: '#3b82f6',
     difficulty: 'Beginner',
     desc: 'The simplest RAG pipeline: load documents, chunk, embed, retrieve, and generate answers.',
     minutes: 30,
@@ -34,7 +32,6 @@ const lessons = [
     slug: 'conversational-rag',
     title: 'Conversational RAG',
     icon: MessageSquare,
-    color: '#22c55e',
     difficulty: 'Intermediate',
     desc: 'Add chat history and follow-up question resolution to RAG systems.',
     minutes: 25,
@@ -43,7 +40,6 @@ const lessons = [
     slug: 'hybrid-rag',
     title: 'Hybrid RAG',
     icon: GitMerge,
-    color: '#f59e0b',
     difficulty: 'Intermediate',
     desc: 'Combine keyword search (BM25) with dense vector search for more accurate retrieval.',
     minutes: 30,
@@ -52,7 +48,6 @@ const lessons = [
     slug: 'agentic-rag',
     title: 'Agentic RAG',
     icon: Bot,
-    color: '#a855f7',
     difficulty: 'Advanced',
     desc: 'Build AI agents that decide when and how to retrieve, using tools and conditional workflows.',
     minutes: 35,
@@ -61,7 +56,6 @@ const lessons = [
     slug: 'corrective-rag',
     title: 'Corrective RAG (CRAG)',
     icon: ShieldCheck,
-    color: '#06b6d4',
     difficulty: 'Advanced',
     desc: 'Evaluate retrieval quality and take corrective actions when results are insufficient.',
     minutes: 30,
@@ -70,7 +64,6 @@ const lessons = [
     slug: 'self-rag',
     title: 'Self-RAG',
     icon: Brain,
-    color: '#ec4899',
     difficulty: 'Advanced',
     desc: 'Self-reflective retrieval and generation with answer quality evaluation.',
     minutes: 35,
@@ -79,7 +72,6 @@ const lessons = [
     slug: 'graphrag',
     title: 'GraphRAG',
     icon: Network,
-    color: '#8b5cf6',
     difficulty: 'Advanced',
     desc: 'Use knowledge graphs to capture entity relationships for relationship-aware retrieval.',
     minutes: 35,
@@ -88,48 +80,109 @@ const lessons = [
     slug: 'multimodal-rag',
     title: 'Multimodal RAG',
     icon: Image,
-    color: '#ef4444',
     difficulty: 'Advanced',
     desc: 'Handle text, images, tables, and charts from mixed-media documents.',
     minutes: 30,
   },
 ];
 
+const learningPath = ['RAG Fundamentals', 'Basic RAG', 'Conversational', 'Hybrid', 'Agentic', 'CRAG', 'Self-RAG', 'GraphRAG', 'Multimodal'];
+
 export default function LearnPage() {
   return (
-    <div className="flex">
+    <div style={{ display: 'flex' }}>
       <Sidebar />
-      <div className="flex-1 min-w-0 min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-          <div className="mb-10">
-            <div className="flex items-center gap-2 mb-3">
-              <BookOpen size={24} className="text-[var(--color-accent-purple)]" />
-              <h1 className="text-3xl font-bold">Learn RAG</h1>
+      <div style={{ flex: 1, minWidth: 0, minHeight: '100vh' }}>
+        {/* Banner hero */}
+        <div
+          style={{
+            borderBottom: 'var(--rule-hair) solid var(--color-rule)',
+            padding: 'var(--space-3xl) var(--space-xl) var(--space-2xl)',
+            background: 'var(--color-paper)',
+          }}
+        >
+          <div style={{ maxWidth: '640px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', marginBottom: 'var(--space-md)' }}>
+              <BookOpen size={22} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
+              <h1
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'var(--text-display-s)',
+                  fontWeight: 700,
+                  letterSpacing: 'var(--tracking-display)',
+                  color: 'var(--color-ink)',
+                  margin: 0,
+                }}
+              >
+                Learn RAG
+              </h1>
             </div>
-            <p className="text-[var(--color-text-secondary)] text-lg">
-              A structured learning path from RAG fundamentals to advanced architectures.
-              Start with the basics and progressively build your understanding.
+            <p
+              style={{
+                fontSize: 'var(--text-lead)',
+                color: 'var(--color-ink-2)',
+                margin: 0,
+              }}
+            >
+              Start from the beginning: a structured path from RAG fundamentals to advanced architectures.
             </p>
           </div>
+        </div>
 
-          {/* Learning Roadmap */}
-          <div className="mb-10 p-6 rounded-xl bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-accent-purple-dim)]/10 border border-[var(--color-border-primary)]">
-            <h2 className="text-lg font-bold mb-3">📍 Suggested Learning Path</h2>
-            <div className="flex flex-wrap gap-2">
-              {['RAG Fundamentals', 'Basic RAG', 'Conversational', 'Hybrid', 'Agentic', 'CRAG', 'Self-RAG', 'GraphRAG', 'Multimodal'].map((step, i) => (
-                <span key={i} className="flex items-center gap-1.5 text-xs">
-                  <span className="w-5 h-5 rounded-full bg-[var(--color-accent-purple)]/20 text-[var(--color-accent-purple)] flex items-center justify-center font-bold text-[10px]">
+        <div style={{ maxWidth: '900px', padding: 'var(--space-xl)' }}>
+
+          {/* Suggested path */}
+          <div
+            style={{
+              marginBottom: 'var(--space-xl)',
+              padding: 'var(--space-lg)',
+              background: 'var(--color-accent-wash)',
+              border: 'var(--rule-hair) solid color-mix(in oklab, var(--color-accent) 20%, transparent)',
+              borderRadius: 'var(--radius-card)',
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-md)',
+                fontWeight: 600,
+                color: 'var(--color-ink)',
+                marginBottom: 'var(--space-sm)',
+              }}
+            >
+              Suggested Learning Path
+            </h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)', alignItems: 'center' }}>
+              {learningPath.map((step, i) => (
+                <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)', fontSize: 'var(--text-sm)' }}>
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      width: '20px',
+                      height: '20px',
+                      borderRadius: '50%',
+                      background: 'var(--color-accent)',
+                      color: 'var(--color-accent-ink)',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      flexShrink: 0,
+                    }}
+                  >
                     {i + 1}
                   </span>
-                  <span className="text-[var(--color-text-secondary)]">{step}</span>
-                  {i < 8 && <span className="text-[var(--color-text-muted)] mx-1">→</span>}
+                  <span style={{ color: 'var(--color-ink-2)' }}>{step}</span>
+                  {i < learningPath.length - 1 && (
+                    <span style={{ color: 'var(--color-muted)', marginInline: '2px' }}>→</span>
+                  )}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Lesson Cards */}
-          <div className="space-y-3">
+          {/* Lesson cards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
             {lessons.map((lesson) => {
               const Icon = lesson.icon;
               const badgeClass = lesson.difficulty === 'Beginner' ? 'badge-beginner' :
@@ -138,25 +191,50 @@ export default function LearnPage() {
                 <Link
                   key={lesson.slug}
                   href={`/learn/${lesson.slug}`}
-                  className="card group flex items-start gap-4"
+                  className="card"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 'var(--space-md)',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
                 >
                   <div
-                    className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ background: `color-mix(in srgb, ${lesson.color} 15%, transparent)` }}
+                    style={{
+                      flexShrink: 0,
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'var(--color-accent-wash)',
+                    }}
                   >
-                    <Icon size={22} style={{ color: lesson.color }} />
+                    <Icon size={22} style={{ color: 'var(--color-accent)' }} />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold group-hover:text-[var(--color-accent-purple)] transition-colors">
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
+                      <h3
+                        style={{
+                          fontFamily: 'var(--font-display)',
+                          fontWeight: 600,
+                          fontSize: 'var(--text-md)',
+                          color: 'var(--color-ink)',
+                          margin: 0,
+                        }}
+                      >
                         {lesson.title}
                       </h3>
                       <span className={`badge ${badgeClass}`}>{lesson.difficulty}</span>
                     </div>
-                    <p className="text-sm text-[var(--color-text-muted)]">{lesson.desc}</p>
-                    <span className="text-xs text-[var(--color-text-muted)] mt-1 block">~{lesson.minutes} min read</span>
+                    <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-muted)', margin: 0 }}>{lesson.desc}</p>
+                    <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-muted)', marginTop: '0.25rem', display: 'block' }}>
+                      ~{lesson.minutes} min read
+                    </span>
                   </div>
-                  <ArrowRight size={18} className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-purple)] shrink-0 mt-2 transition-colors" />
+                  <ArrowRight size={18} style={{ color: 'var(--color-muted)', flexShrink: 0, marginTop: '4px' }} />
                 </Link>
               );
             })}

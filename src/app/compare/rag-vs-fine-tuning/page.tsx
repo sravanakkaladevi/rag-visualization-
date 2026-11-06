@@ -127,21 +127,21 @@ export default function ComparePage() {
             Home
           </Link>
           <ChevronRight size={12} />
-          <span className="text-[var(--color-accent-purple)] font-medium">
+          <span className="text-[var(--color-accent)] font-medium">
             RAG vs Fine-Tuning
           </span>
         </nav>
 
         {/* Page Header */}
         <header className="mb-10 pb-8 border-b border-[var(--color-border-primary)]">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[var(--color-accent-purple)] uppercase tracking-wider mb-2">
+          <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-ink-2)] mb-2">
             <Scale size={14} />
             Architectural Trade-offs
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--color-text-primary)] tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--color-ink)] tracking-tight mb-4">
             RAG vs. Fine-Tuning
           </h1>
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-[var(--color-ink-2)] leading-relaxed max-w-3xl">
             Neither technique is universally superior. Understanding when to retrieve external knowledge versus when to modify model weights is crucial for building cost-effective AI systems.
           </p>
         </header>
@@ -150,7 +150,7 @@ export default function ComparePage() {
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="p-6 rounded-xl border border-[var(--color-accent-blue)]/30 bg-blue-950/10">
             <h2 className="text-lg font-bold text-[var(--color-accent-blue)] mb-2">
-              📖 RAG: Open-Book Exam
+              RAG: Open-Book Exam
             </h2>
             <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
               The student brings books, manuals, and up-to-date company wikis into the exam. When a question is asked, they look up the exact section, cite the paragraph, and formulate the answer.
@@ -159,7 +159,7 @@ export default function ComparePage() {
 
           <div className="p-6 rounded-xl border border-[var(--color-accent-purple)]/30 bg-purple-950/10">
             <h2 className="text-lg font-bold text-[var(--color-accent-purple)] mb-2">
-              🧠 Fine-Tuning: Specialized Training
+              Fine-Tuning: Specialized Training
             </h2>
             <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
               The student attends intensive medical residency or legal training. They internalize clinical shorthand, behavioral guidelines, and specialized jargon deep into their muscle memory.
@@ -350,7 +350,7 @@ export default function ComparePage() {
 
           {recommendation && (
             <div className="p-5 rounded-xl border border-[var(--color-accent-purple)]/40 bg-purple-950/20 space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-accent-yellow)]">
+              <span className="text-xs font-bold text-[var(--color-accent)]">
                 {recommendation.badge}
               </span>
               <h3 className="text-lg font-bold text-[var(--color-text-primary)]">

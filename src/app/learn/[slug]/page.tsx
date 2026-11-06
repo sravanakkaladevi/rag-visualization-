@@ -138,7 +138,7 @@ export default async function LessonPage({ params }: PageProps) {
         <header className="mb-10 pb-8 border-b border-[var(--color-border-primary)]">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span
-              className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${
+              className={`px-3 py-1 rounded-full text-xs font-semibold border ${
                 difficultyColors[lesson.difficulty]
               }`}
             >
@@ -161,7 +161,7 @@ export default async function LessonPage({ params }: PageProps) {
           {/* Learning Objectives */}
           {lesson.objectives && lesson.objectives.length > 0 && (
             <div className="mt-8 p-5 rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)]/50 backdrop-blur-sm">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-accent-yellow)] flex items-center gap-2 mb-3">
+              <h2 className="text-sm font-semibold text-[var(--color-accent)] flex items-center gap-2 mb-3">
                 <Sparkles size={16} />
                 Learning Objectives
               </h2>

@@ -8,14 +8,14 @@ import RAGPipeline from '@/components/RAGPipeline';
 import AnimatedArchitectureVisualizer from '@/components/AnimatedArchitectureVisualizer';
 
 const approaches = [
-  { slug: 'basic-rag', title: 'Basic / Naive RAG', icon: FileText, color: '#3b82f6', desc: 'The foundational pattern: load, chunk, embed, retrieve, and generate.' },
-  { slug: 'conversational-rag', title: 'Conversational RAG', icon: MessageSquare, color: '#22c55e', desc: 'Multi-turn conversations with chat history and follow-up resolution.' },
-  { slug: 'hybrid-rag', title: 'Hybrid RAG', icon: GitMerge, color: '#f59e0b', desc: 'Combine keyword (BM25) and dense vector search for better retrieval.' },
-  { slug: 'agentic-rag', title: 'Agentic RAG', icon: Bot, color: '#a855f7', desc: 'AI agents that decide when and how to retrieve, using tools and workflows.' },
-  { slug: 'corrective-rag', title: 'Corrective RAG', icon: ShieldCheck, color: '#06b6d4', desc: 'Evaluate retrieval quality and take corrective actions when needed.' },
-  { slug: 'self-rag', title: 'Self-RAG', icon: Brain, color: '#ec4899', desc: 'Self-reflective generation with retrieval and answer quality evaluation.' },
-  { slug: 'graphrag', title: 'GraphRAG', icon: Network, color: '#8b5cf6', desc: 'Knowledge graphs for relationship-aware, structured retrieval.' },
-  { slug: 'multimodal-rag', title: 'Multimodal RAG', icon: Image, color: '#ef4444', desc: 'Handle text, images, tables, and charts from mixed-media documents.' },
+  { slug: 'basic-rag', title: 'Basic / Naive RAG', icon: FileText, color: 'var(--color-accent)', desc: 'The foundational pattern: load, chunk, embed, retrieve, and generate.' },
+  { slug: 'conversational-rag', title: 'Conversational RAG', icon: MessageSquare, color: 'var(--color-success)', desc: 'Multi-turn conversations with chat history and follow-up resolution.' },
+  { slug: 'hybrid-rag', title: 'Hybrid RAG', icon: GitMerge, color: 'oklch(60% 0.14 72)', desc: 'Combine keyword (BM25) and dense vector search for better retrieval.' },
+  { slug: 'agentic-rag', title: 'Agentic RAG', icon: Bot, color: 'var(--color-accent)', desc: 'AI agents that decide when and how to retrieve, using tools and workflows.' },
+  { slug: 'corrective-rag', title: 'Corrective RAG', icon: ShieldCheck, color: 'var(--color-accent-2)', desc: 'Evaluate retrieval quality and take corrective actions when needed.' },
+  { slug: 'self-rag', title: 'Self-RAG', icon: Brain, color: 'var(--color-accent)', desc: 'Self-reflective generation with retrieval and answer quality evaluation.' },
+  { slug: 'graphrag', title: 'GraphRAG', icon: Network, color: 'var(--color-accent-deep)', desc: 'Knowledge graphs for relationship-aware, structured retrieval.' },
+  { slug: 'multimodal-rag', title: 'Multimodal RAG', icon: Image, color: 'var(--color-error)', desc: 'Handle text, images, tables, and charts from mixed-media documents.' },
 ];
 
 const features = [
@@ -50,184 +50,413 @@ const faqs = [
   },
 ];
 
+const tools = ['LangChain', 'LlamaIndex', 'ChromaDB', 'FAISS', 'Qdrant', 'Weaviate', 'Pinecone', 'Neo4j', 'Elasticsearch', 'Ollama'];
+
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-accent-purple)]/5 via-transparent to-transparent" />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[var(--color-accent-purple)]/5 rounded-full blur-3xl" />
-        <div className="absolute top-40 right-1/4 w-96 h-96 bg-[var(--color-accent-blue)]/5 rounded-full blur-3xl" />
+    <div style={{ minHeight: '100vh', background: 'var(--color-paper)' }}>
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-accent-purple)]/10 border border-[var(--color-accent-purple)]/20 text-[var(--color-accent-purple)] text-xs font-medium mb-6">
-            <Zap size={12} />
-            <span>Comprehensive RAG Learning Resource</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-            Understand RAG.{' '}
-            <span className="gradient-text">Build Smarter AI.</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-8 leading-relaxed">
-            Learn how AI retrieves knowledge, searches documents, and generates grounded answers.
-            From fundamentals to advanced architectures.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/learn/rag-fundamentals" className="btn-primary text-base px-8 py-3">
-              Start Learning <ArrowRight size={18} />
-            </Link>
-            <a href="#architectures" className="btn-secondary text-base px-8 py-3">
-              Explore RAG Architectures
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* RAG Pipeline Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">How RAG Works</h2>
-          <p className="text-[var(--color-text-secondary)]">
-            Click each stage to learn how documents become AI-powered answers.
-          </p>
-        </div>
-        <RAGPipeline />
-      </section>
-
-      {/* Features Grid */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">What You&apos;ll Learn</h2>
-          <p className="text-[var(--color-text-secondary)]">
-            A complete learning roadmap from RAG basics to production architectures.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map((f, i) => (
-            <div key={i} className="card group">
-              <f.icon size={24} className="text-[var(--color-accent-purple)] mb-3" />
-              <h3 className="font-semibold mb-1.5">{f.title}</h3>
-              <p className="text-sm text-[var(--color-text-secondary)]">{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Eight RAG Approaches & Animated Visualizer */}
-      <section id="architectures" className="max-w-5xl mx-auto px-4 sm:px-6 py-16 scroll-mt-20">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-accent-purple)]/10 border border-[var(--color-accent-purple)]/20 text-[var(--color-accent-purple)] text-xs font-semibold uppercase tracking-wider mb-3">
-            <Zap size={12} />
-            <span>Interactive Architecture Simulator</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Eight Animated RAG Architectures</h2>
-          <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            Watch live simulated queries and payloads travel across all 8 architectural patterns. Toggle playback, adjust speed, and inspect intermediate token payloads.
-          </p>
-        </div>
-
-        {/* The Animated Architecture Visualizer */}
-        <div className="mb-12">
-          <AnimatedArchitectureVisualizer initialType="basic-rag" allowSwitching={true} />
-        </div>
-
-        {/* Deep Dive Lesson Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {approaches.map((a) => {
-            const Icon = a.icon;
-            return (
-              <Link
-                key={a.slug}
-                href={`/learn/${a.slug}`}
-                className="card group flex gap-4"
-              >
-                <div
-                  className="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
-                  style={{ background: `color-mix(in srgb, ${a.color} 15%, transparent)` }}
-                >
-                  <Icon size={20} style={{ color: a.color }} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-sm mb-1 group-hover:text-[var(--color-accent-purple)] transition-colors">
-                    {a.title}
-                  </h3>
-                  <p className="text-xs text-[var(--color-text-muted)]">{a.desc}</p>
-                </div>
-                <ArrowRight size={16} className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-purple)] shrink-0 mt-1 transition-colors" />
+      {/* ── Hero ────────────────────────────────────────────────── */}
+      <section
+        style={{
+          borderBottom: 'var(--rule-hair) solid var(--color-rule)',
+          paddingBlock: 'var(--space-4xl) var(--space-3xl)',
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
+            gap: 'var(--gap-columns)',
+            alignItems: 'center',
+          }}
+        >
+          {/* Text column */}
+          <div>
+            <h1
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-display)',
+                fontWeight: 700,
+                letterSpacing: 'var(--tracking-display)',
+                color: 'var(--color-ink)',
+                marginBottom: 'var(--space-lg)',
+                lineHeight: 1.05,
+                textWrap: 'balance',
+                maxWidth: '14ch',
+              }}
+            >
+              Master RAG{' '}
+              <span style={{ color: 'var(--color-accent)' }}>Architecture</span>
+            </h1>
+            <p
+              className="lead"
+              style={{
+                color: 'var(--color-ink-2)',
+                marginBottom: 'var(--space-xl)',
+              }}
+            >
+              Eight patterns, from fundamentals to production. Interactive diagrams included.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
+              <Link href="/learn/rag-fundamentals" className="key key--primary">
+                Start Learning <ArrowRight size={16} />
               </Link>
-            );
-          })}
+              <a href="#architectures" className="key">
+                Browse Architectures
+              </a>
+            </div>
+          </div>
+
+          {/* Pipeline visualizer slot */}
+          <div
+            style={{
+              background: 'var(--color-paper-2)',
+              border: 'var(--rule-hair) solid var(--color-rule)',
+              borderRadius: 'var(--radius-card)',
+              padding: 'var(--space-lg)',
+              minHeight: '320px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <RAGPipeline />
+          </div>
         </div>
       </section>
 
-      {/* Tools Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Tools & Frameworks</h2>
-          <p className="text-[var(--color-text-secondary)]">
+      {/* ── Course Grid — Eight RAG Patterns ────────────────────── */}
+      <section
+        id="architectures"
+        style={{
+          paddingBlock: 'var(--section-gap-s)',
+          borderBottom: 'var(--rule-hair) solid var(--color-rule)',
+          scrollMarginTop: '64px',
+        }}
+      >
+        <div className="container">
+          <div style={{ marginBottom: 'var(--space-xl)', maxWidth: '40ch' }}>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-section)',
+                fontWeight: 700,
+                letterSpacing: 'var(--tracking-display)',
+                color: 'var(--color-ink)',
+                marginBottom: 'var(--space-sm)',
+              }}
+            >
+              Eight RAG Patterns
+            </h2>
+            <p style={{ color: 'var(--color-ink-2)', fontSize: 'var(--text-lead)' }}>
+              Watch live simulated queries travel across all eight architectures.
+            </p>
+          </div>
+
+          <div style={{ marginBottom: 'var(--space-2xl)' }}>
+            <AnimatedArchitectureVisualizer initialType="basic-rag" allowSwitching={true} />
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gap: 'var(--space-md)',
+            }}
+          >
+            {approaches.map((a) => {
+              const Icon = a.icon;
+              return (
+                <Link
+                  key={a.slug}
+                  href={`/learn/${a.slug}`}
+                  className="card"
+                  style={{
+                    display: 'flex',
+                    gap: 'var(--space-md)',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
+                >
+                  <div
+                    style={{
+                      flexShrink: 0,
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '8px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'var(--color-accent-wash)',
+                    }}
+                  >
+                    <Icon size={18} style={{ color: a.color }} />
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <h3
+                      style={{
+                        fontSize: 'var(--text-sm)',
+                        fontWeight: 600,
+                        color: 'var(--color-ink)',
+                        marginBottom: '0.25rem',
+                        fontFamily: 'var(--font-display)',
+                      }}
+                    >
+                      {a.title}
+                    </h3>
+                    <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-muted)', margin: 0 }}>{a.desc}</p>
+                  </div>
+                  <ArrowRight size={16} style={{ color: 'var(--color-muted)', flexShrink: 0, marginTop: '2px' }} />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Features ─────────────────────────────────────────────── */}
+      <section
+        style={{
+          paddingBlock: 'var(--section-gap-s)',
+          borderBottom: 'var(--rule-hair) solid var(--color-rule)',
+        }}
+      >
+        <div className="container">
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-section)',
+              fontWeight: 700,
+              letterSpacing: 'var(--tracking-display)',
+              color: 'var(--color-ink)',
+              marginBottom: 'var(--space-xl)',
+            }}
+          >
+            What&apos;s inside
+          </h2>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gap: 'var(--space-md)',
+            }}
+          >
+            {features.map((f, i) => (
+              <div key={i} className="card">
+                <f.icon size={22} style={{ color: 'var(--color-accent)', marginBottom: 'var(--space-sm)' }} />
+                <h3
+                  style={{
+                    fontSize: 'var(--text-md)',
+                    fontWeight: 600,
+                    color: 'var(--color-ink)',
+                    marginBottom: 'var(--space-xs)',
+                    fontFamily: 'var(--font-display)',
+                  }}
+                >
+                  {f.title}
+                </h3>
+                <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-ink-2)', margin: 0 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Tools Rail ───────────────────────────────────────────── */}
+      <section
+        style={{
+          paddingBlock: 'var(--section-gap-s)',
+          borderBottom: 'var(--rule-hair) solid var(--color-rule)',
+        }}
+      >
+        <div className="container">
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-section)',
+              fontWeight: 700,
+              letterSpacing: 'var(--tracking-display)',
+              color: 'var(--color-ink)',
+              marginBottom: 'var(--space-lg)',
+            }}
+          >
+            Tools &amp; Frameworks
+          </h2>
+          <p style={{ color: 'var(--color-ink-2)', marginBottom: 'var(--space-lg)' }}>
             Explore the ecosystem of tools that power RAG systems.
           </p>
-        </div>
-        <div className="flex flex-wrap justify-center gap-3 mb-6">
-          {['LangChain', 'LlamaIndex', 'ChromaDB', 'FAISS', 'Qdrant', 'Weaviate', 'Pinecone', 'Neo4j', 'Elasticsearch', 'Ollama'].map(tool => (
-            <span key={tool} className="px-3 py-1.5 text-sm bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-lg text-[var(--color-text-secondary)]">
-              {tool}
-            </span>
-          ))}
-        </div>
-        <div className="text-center">
-          <Link href="/tools" className="btn-secondary">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)', marginBottom: 'var(--space-xl)' }}>
+            {tools.map(tool => (
+              <span key={tool} className="key" style={{ fontSize: 'var(--text-xs)' }}>
+                {tool}
+              </span>
+            ))}
+          </div>
+          <Link href="/tools" className="key">
             View All Tools <ArrowRight size={16} />
           </Link>
         </div>
       </section>
 
-      {/* Projects CTA */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-        <div className="card !p-8 bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-accent-purple-dim)]/20 text-center">
-          <FolderGit2 size={32} className="text-[var(--color-accent-purple)] mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-3">Build Real Projects</h2>
-          <p className="text-[var(--color-text-secondary)] mb-6 max-w-lg mx-auto">
-            Go from theory to practice with step-by-step project tutorials including Chat with PDF,
-            Agentic RAG, Hybrid Search, and more.
+      {/* ── Projects CTA Band (graphite) ─────────────────────────── */}
+      <section
+        style={{
+          paddingBlock: 'var(--section-gap-s)',
+          background: 'var(--color-graphite)',
+          borderBottom: 'var(--rule-hair) solid var(--color-graphite-glyph-1)',
+        }}
+      >
+        <div className="container" style={{ textAlign: 'center' }}>
+          <FolderGit2 size={32} style={{ color: 'var(--color-accent-2)', marginBottom: 'var(--space-md)', margin: '0 auto var(--space-md)' }} />
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-section)',
+              fontWeight: 700,
+              letterSpacing: 'var(--tracking-display)',
+              color: 'var(--color-graphite-ink)',
+              marginBottom: 'var(--space-md)',
+            }}
+          >
+            Build Real Projects
+          </h2>
+          <p
+            style={{
+              color: 'var(--color-graphite-muted)',
+              marginBottom: 'var(--space-xl)',
+              maxWidth: '48ch',
+              marginInline: 'auto',
+            }}
+          >
+            Go from theory to practice with step-by-step project tutorials including Chat with PDF, Agentic RAG, Hybrid Search, and more.
           </p>
-          <Link href="/projects" className="btn-primary">
+          <Link href="/projects" className="key key--primary">
             Explore Projects <ArrowRight size={16} />
           </Link>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <details key={i} className="group card !p-0 overflow-hidden">
-              <summary className="flex items-center justify-between cursor-pointer px-5 py-4 text-sm font-medium list-none">
-                <span>{faq.q}</span>
-                <ChevronDown size={16} className="text-[var(--color-text-muted)] transition-transform group-open:rotate-180" />
-              </summary>
-              <div className="px-5 pb-4 text-sm text-[var(--color-text-secondary)]">{faq.a}</div>
-            </details>
-          ))}
+      {/* ── FAQ ──────────────────────────────────────────────────── */}
+      <section style={{ paddingBlock: 'var(--section-gap-s)', borderBottom: 'var(--rule-hair) solid var(--color-rule)' }}>
+        <div className="container" style={{ maxWidth: '720px' }}>
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-section)',
+              fontWeight: 700,
+              letterSpacing: 'var(--tracking-display)',
+              color: 'var(--color-ink)',
+              marginBottom: 'var(--space-xl)',
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
+          <div>
+            {faqs.map((faq, i) => (
+              <details
+                key={i}
+                style={{
+                  borderTop: 'var(--rule-hair) solid var(--color-rule)',
+                }}
+              >
+                <summary
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    cursor: 'pointer',
+                    padding: 'var(--space-md) 0',
+                    fontSize: 'var(--text-md)',
+                    fontWeight: 600,
+                    color: 'var(--color-ink)',
+                    listStyle: 'none',
+                    fontFamily: 'var(--font-display)',
+                  }}
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown size={16} style={{ color: 'var(--color-muted)', flexShrink: 0 }} />
+                </summary>
+                <div
+                  style={{
+                    paddingBottom: 'var(--space-md)',
+                    fontSize: 'var(--text-sm)',
+                    color: 'var(--color-ink-2)',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+            <div style={{ borderTop: 'var(--rule-hair) solid var(--color-rule)' }} />
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-[var(--color-border-primary)] py-8 mt-8">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-blue)] flex items-center justify-center">
-              <BookOpen size={14} className="text-white" />
+      {/* ── Footer (colophon) ────────────────────────────────────── */}
+      <footer
+        style={{
+          paddingBlock: 'var(--space-2xl)',
+          background: 'var(--color-paper-2)',
+        }}
+      >
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 2fr) repeat(3, minmax(0, 1fr))',
+              gap: 'var(--space-xl)',
+              marginBottom: 'var(--space-xl)',
+            }}
+          >
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)', marginBottom: 'var(--space-sm)' }}>
+                <BookOpen size={18} style={{ color: 'var(--color-accent)' }} />
+                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: 'var(--color-ink)' }}>RAG Learning Hub</span>
+              </div>
+              <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-muted)', maxWidth: '28ch' }}>
+                Built for developers learning Retrieval-Augmented Generation.
+              </p>
             </div>
-            <span className="text-sm font-semibold">RAG Learning Hub</span>
+            <div>
+              <p style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--color-ink)', marginBottom: 'var(--space-sm)', fontFamily: 'var(--font-display)' }}>Learn</p>
+              {[
+                { href: '/learn/rag-fundamentals', label: 'RAG Fundamentals' },
+                { href: '/learn/basic-rag', label: 'Basic RAG' },
+                { href: '/learn/agentic-rag', label: 'Agentic RAG' },
+                { href: '/learn/graphrag', label: 'GraphRAG' },
+              ].map(l => (
+                <div key={l.href} style={{ marginBottom: '0.25rem' }}>
+                  <Link href={l.href} style={{ fontSize: 'var(--text-sm)', color: 'var(--color-muted)' }}>{l.label}</Link>
+                </div>
+              ))}
+            </div>
+            <div>
+              <p style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--color-ink)', marginBottom: 'var(--space-sm)', fontFamily: 'var(--font-display)' }}>Resources</p>
+              {[
+                { href: '/tools', label: 'Tools' },
+                { href: '/projects', label: 'Projects' },
+                { href: '/glossary', label: 'Glossary' },
+              ].map(l => (
+                <div key={l.href} style={{ marginBottom: '0.25rem' }}>
+                  <Link href={l.href} style={{ fontSize: 'var(--text-sm)', color: 'var(--color-muted)' }}>{l.label}</Link>
+                </div>
+              ))}
+            </div>
+            <div>
+              <p style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--color-ink)', marginBottom: 'var(--space-sm)', fontFamily: 'var(--font-display)' }}>Compare</p>
+              <div style={{ marginBottom: '0.25rem' }}>
+                <Link href="/compare/rag-vs-fine-tuning" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-muted)' }}>RAG vs Fine-Tuning</Link>
+              </div>
+            </div>
           </div>
-          <p className="text-xs text-[var(--color-text-muted)]">
-            Built for developers learning Retrieval-Augmented Generation.
-          </p>
+          <div style={{ borderTop: 'var(--rule-hair) solid var(--color-rule)', paddingTop: 'var(--space-lg)' }}>
+            <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-muted)', margin: 0 }}>
+              Free educational resource, no login, no paywalls. All content is open.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

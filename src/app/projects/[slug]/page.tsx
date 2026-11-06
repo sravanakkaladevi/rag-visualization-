@@ -69,7 +69,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <header className="mb-10 pb-8 border-b border-[var(--color-border-primary)]">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span
-              className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${
+              className={`px-3 py-1 rounded-full text-xs font-semibold border ${
                 difficultyColors[project.difficulty]
               }`}
             >
@@ -196,7 +196,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </h2>
 
           <div className="space-y-2">
-            <span className="text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
+            <span className="text-xs font-bold text-[var(--color-muted)]">
               Input Query:
             </span>
             <div className="p-3 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border-primary)] font-mono text-xs text-[var(--color-text-primary)] whitespace-pre-wrap">
@@ -205,7 +205,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
 
           <div className="space-y-2">
-            <span className="text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
+            <span className="text-xs font-bold text-[var(--color-muted)]">
               Generated Grounded Output:
             </span>
             <div className="p-3 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border-primary)] font-mono text-xs text-emerald-400 whitespace-pre-wrap">

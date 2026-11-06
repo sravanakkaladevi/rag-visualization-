@@ -47,7 +47,7 @@ export default function ToolsPage() {
       <main className="flex-1 min-w-0 px-4 sm:px-8 py-8 max-w-6xl mx-auto">
         {/* Header banner */}
         <header className="mb-10 pb-8 border-b border-[var(--color-border-primary)]">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[var(--color-accent-purple)] uppercase tracking-wider mb-2">
+          <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-ink-2)] mb-2">
             <Wrench size={14} />
             Ecosystem Directory
           </div>
@@ -128,14 +128,14 @@ export default function ToolsPage() {
               return (
                 <div
                   key={tool.slug}
-                  className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] p-6 flex flex-col justify-between hover:border-[var(--color-border-focus)] transition-all group"
+                  className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] p-6 flex flex-col justify-between hover:border-[var(--color-border-focus)] transition-colors transition-shadow group"
                 >
                   <div>
                     {/* Header: Icon, Name & Doc link */}
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <div className="flex items-center gap-3">
                         <span className="text-2xl p-2 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border-primary)]">
-                          {tool.icon || '🛠️'}
+                          {tool.icon || <Wrench size={20} />}
                         </span>
                         <div>
                           <h3 className="text-lg font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-yellow)] transition-colors">
